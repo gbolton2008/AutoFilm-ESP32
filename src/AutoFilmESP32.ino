@@ -11,7 +11,8 @@
 void setup();
 void loop();
 
-void setup() {
+void setup()
+{
   Serial.begin(115200);
 
   // Disable the watchdog timers
@@ -26,11 +27,11 @@ void setup() {
 
   // Set pin modes
   pinMode(EN_PIN, OUTPUT);
-  digitalWrite(EN_PIN, HIGH);  // Disable motor initially
+  digitalWrite(EN_PIN, HIGH); // Disable motor initially
   pinMode(beeperPin, OUTPUT);
   // Set stepper motor properties
   stepper.setMaxSpeed(SPEED);
-  stepper.setAcceleration(9600);  // Set acceleration
+  stepper.setAcceleration(9600); // Set acceleration
 
   // Display welcome message
   lcd.setCursor(6, 1);
@@ -41,6 +42,7 @@ void setup() {
   lcd.clear();
 }
 
-void loop() {
+void loop()
+{
   startingMenu();
 }

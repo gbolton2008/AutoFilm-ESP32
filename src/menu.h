@@ -10,7 +10,7 @@
 void getMenuInput();
 char getScrollEntEscInput();
 char getEntEscInput();
-int startProcessing(struct devSequence* sequence, int sequenceStep);
+int startProcessing(struct devSequence *sequence, int sequenceStep);
 void startDev();
 
 #endif

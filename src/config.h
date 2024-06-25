@@ -21,7 +21,7 @@
 #define TEMP_SENSOR_PIN 13
 #define NUM_DEV_SEQUENCES 6
 
-extern const char* version;
+extern const char *version;
 extern Keypad keypad;
 extern LiquidCrystal_I2C lcd;
 extern AccelStepper stepper;

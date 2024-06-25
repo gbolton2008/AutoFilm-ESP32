@@ -1,8 +1,8 @@
 #include "display.h"
 #include "menu.h"
 
-
-void startingMenu() {
+void startingMenu()
+{
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print("Select Programme:");
@@ -19,17 +19,20 @@ void startingMenu() {
   lcd.setCursor(10, 3);
   lcd.print("6. B&W Rev");
 
-  while (devPgm == "") {
+  while (devPgm == "")
+  {
     getMenuInput();
   }
   lcd.print(devPgm);
 
-  if (devPgm == "C41" || devPgm == "E6" || devPgm == "B&W" || devPgm == "ECN-2" || devPgm == "Custom" || devPgm == "B&WREV") {
+  if (devPgm == "C41" || devPgm == "E6" || devPgm == "B&W" || devPgm == "ECN-2" || devPgm == "Custom" || devPgm == "B&WREV")
+  {
     startDev();
   }
 }
 
-void processHeadings() {
+void processHeadings()
+{
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print("Step");
@@ -39,11 +42,11 @@ void processHeadings() {
   lcd.print("Temp");
 }
 
-
-
-char* secondsToMinutesSeconds(int seconds) {
-  char* result = (char*)malloc(6 * sizeof(char));
-  if (result == NULL) {
+char *secondsToMinutesSeconds(int seconds)
+{
+  char *result = (char *)malloc(6 * sizeof(char));
+  if (result == NULL)
+  {
     return NULL;
   }
 

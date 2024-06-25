@@ -4,12 +4,13 @@
 #include <AccelStepper.h>
 #include "config.h"
 
-struct MotorTaskParams {
+struct MotorTaskParams
+{
   float cwRotations;
   float ccwRotations;
   unsigned long int processEndTime;
 };
 
-void runMotorTask(void* parameter);
+void runMotorTask(void *parameter);
 
 #endif

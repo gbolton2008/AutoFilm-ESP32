@@ -3,7 +3,8 @@
 #define NUM_DEV_SEQUENCES 6
 #include <Arduino.h>
 
-struct devSequence {
+struct devSequence
+{
   char processName[7];
   int cycles;
   unsigned long int processTime[20];
@@ -14,6 +15,6 @@ struct devSequence {
 
 extern struct devSequence devSequences[NUM_DEV_SEQUENCES];
 
-struct devSequence* findSequenceByName(const char* processName);
+struct devSequence *findSequenceByName(const char *processName);
 
 #endif

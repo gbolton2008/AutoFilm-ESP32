@@ -1,66 +1,80 @@
 #include "menu.h"
 
-void getMenuInput() {
-	char key = keypad.getKey();
-	if (key != NO_KEY) {
-		switch (key) {
-		case '1':
-			devPgm = "C41";
-			break;
-		case '2':
-			devPgm = "E6";
-			break;
-		case '3':
-			devPgm = "B&W";
-			break;
-		case '4':
-			devPgm = "ECN-2";
-			break;
-		case '5':
-			devPgm = "Custom";
-			break;
-		case '6':
-			devPgm = "B&WREV";
-			break;
-		}
-	}
+void getMenuInput()
+{
+  char key = keypad.getKey();
+  if (key != NO_KEY)
+  {
+    switch (key)
+    {
+    case '1':
+      devPgm = "C41";
+      break;
+    case '2':
+      devPgm = "E6";
+      break;
+    case '3':
+      devPgm = "B&W";
+      break;
+    case '4':
+      devPgm = "ECN-2";
+      break;
+    case '5':
+      devPgm = "Custom";
+      break;
+    case '6':
+      devPgm = "B&WREV";
+      break;
+    }
+  }
 }
 
-
-char getScrollEntEscInput() {
-  while (true) {
+char getScrollEntEscInput()
+{
+  while (true)
+  {
     char key = keypad.getKey();
-    if (key != NO_KEY) {
-      if (key == 'U' || key == 'D' || key == 'X' || key == 'E' || key == 'L' || key == 'R') {
+    if (key != NO_KEY)
+    {
+      if (key == 'U' || key == 'D' || key == 'X' || key == 'E' || key == 'L' || key == 'R')
+      {
         return key;
       }
     }
-    if (millis() % 1000 == 0) {
+    if (millis() % 1000 == 0)
+    {
       readTemperature();
     }
   }
 }
 
-char getEntEscInput() {
-  while (true) {
+char getEntEscInput()
+{
+  while (true)
+  {
     char key = keypad.getKey();
-    if (key != NO_KEY) {
-      if (key == 'X' || key == 'E') {
+    if (key != NO_KEY)
+    {
+      if (key == 'X' || key == 'E')
+      {
         return key;
       }
     }
-    if (millis() % 1000 == 0) {
+    if (millis() % 1000 == 0)
+    {
       readTemperature();
     }
   }
 }
 
-int startProcessing(struct devSequence* sequence, int sequenceStep) {
+int startProcessing(struct devSequence *sequence, int sequenceStep)
+{
   run = 1;
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print(sequence->processCycleName[sequenceStep]);
-  for (int x = strlen(sequence->processCycleName[sequenceStep]); x < 10; x++) {
+  for (int x = strlen(sequence->processCycleName[sequenceStep]); x < 10; x++)
+  {
     lcd.print(" ");
   }
 
@@ -73,7 +87,8 @@ int startProcessing(struct devSequence* sequence, int sequenceStep) {
   lcd.print("Ent:start Esc:quit");
 
   char key = getEntEscInput();
-  if (key == 'X') {
+  if (key == 'X')
+  {
     devPgm = "";
     run = 0;
     return 0;
@@ -81,7 +96,7 @@ int startProcessing(struct devSequence* sequence, int sequenceStep) {
   processTimeMillis = (unsigned long)sequence->processTime[sequenceStep] * 1000;
   processStartTime = millis();
 
-  MotorTaskParams* params = new MotorTaskParams();
+  MotorTaskParams *params = new MotorTaskParams();
   params->cwRotations = sequence->processCycle[0][sequenceStep];
   params->ccwRotations = sequence->processCycle[1][sequenceStep];
   params->processEndTime = processStartTime + processTimeMillis;
@@ -94,24 +109,26 @@ int startProcessing(struct devSequence* sequence, int sequenceStep) {
   Serial.println(params->processEndTime);
 
   xTaskCreatePinnedToCore(
-    runMotorTask,
-    "MotorTask",
-    8192,
-    (void*)params,
-    1,
-    &motorTaskHandle,
-    0);
+      runMotorTask,
+      "MotorTask",
+      8192,
+      (void *)params,
+      1,
+      &motorTaskHandle,
+      0);
 
-  while (millis() < processStartTime + processTimeMillis) {
+  while (millis() < processStartTime + processTimeMillis)
+  {
     lcd.setCursor(0, 1);
     lcd.print("Remaining: " + (String)secondsToMinutesSeconds((processStartTime + processTimeMillis - millis()) / 1000) + "      ");
     delay(410);
-    Serial.println("before temp read" + (String) millis() + "\n");
+    Serial.println("before temp read" + (String)millis() + "\n");
     readTemperature();
-    Serial.println("after temp read" + (String) millis() + "\n");
+    Serial.println("after temp read" + (String)millis() + "\n");
   }
 
-  if (motorTaskHandle != NULL) {
+  if (motorTaskHandle != NULL)
+  {
     vTaskDelete(motorTaskHandle);
     motorTaskHandle = NULL;
   }
@@ -121,12 +138,15 @@ int startProcessing(struct devSequence* sequence, int sequenceStep) {
   return 1;
 }
 
-void startDev() {
-  const char* searchName = devPgm.c_str();
-  struct devSequence* currentSequence = findSequenceByName(searchName);
+void startDev()
+{
+  const char *searchName = devPgm.c_str();
+  struct devSequence *currentSequence = findSequenceByName(searchName);
 
-  for (int i = 0; i < currentSequence->cycles; i++) {
-    if (run == 1) {
+  for (int i = 0; i < currentSequence->cycles; i++)
+  {
+    if (run == 1)
+    {
       run = startProcessing(currentSequence, i);
       continue;
     }
@@ -134,7 +154,8 @@ void startDev() {
     processHeadings();
     lcd.setCursor(0, 1);
     lcd.print(currentSequence->processCycleName[i]);
-    for (int x = strlen(currentSequence->processCycleName[i]); x < 10; x++) {
+    for (int x = strlen(currentSequence->processCycleName[i]); x < 10; x++)
+    {
       lcd.print(" ");
     }
 
@@ -147,29 +168,43 @@ void startDev() {
     lcd.print("Scroll / Esc / Ent");
 
     char key = getScrollEntEscInput();
-    if (key == 'U') {
-      if (i > 0) {
+    if (key == 'U')
+    {
+      if (i > 0)
+      {
         i--;
       }
       i--;
-    } else if (key == 'D' && i < currentSequence->cycles - 1) {
+    }
+    else if (key == 'D' && i < currentSequence->cycles - 1)
+    {
       continue;
-    } else if (key == 'D' && i == currentSequence->cycles - 1) {
+    }
+    else if (key == 'D' && i == currentSequence->cycles - 1)
+    {
       i--;
       continue;
-    } else if (key == 'X') {
+    }
+    else if (key == 'X')
+    {
       devPgm = "";
       run = 0;
       return;
-    } else if (key == 'E') {
+    }
+    else if (key == 'E')
+    {
       int run = 1;
       startProcessing(currentSequence, i);
-    } else if (key == 'L') {
+    }
+    else if (key == 'L')
+    {
       currentSequence->processTime[i] -= 5;
       lcd.setCursor(10, 1);
       lcd.print(secondsToMinutesSeconds(currentSequence->processTime[i]));
       i--;
-    } else if (key == 'R') {
+    }
+    else if (key == 'R')
+    {
       currentSequence->processTime[i] += 5;
       lcd.setCursor(10, 1);
       lcd.print(secondsToMinutesSeconds(currentSequence->processTime[i]));

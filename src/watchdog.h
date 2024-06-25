@@ -6,7 +6,8 @@
 #include "esp_task_wdt.h"
 
 // Disable the watchdog timers
-void disableWatchdogTimers() {
+void disableWatchdogTimers()
+{
   esp_task_wdt_deinit();
   TaskHandle_t idle_0 = xTaskGetIdleTaskHandleForCPU(0);
   TaskHandle_t idle_1 = xTaskGetIdleTaskHandleForCPU(1);
