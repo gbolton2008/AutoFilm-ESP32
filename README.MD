@@ -92,7 +92,7 @@ Fork the repository.
 2. Make your changes and test thoroughly.
 3. Submit a pull request with a detailed description of your changes.
 
-###License
+### License
 This project is licensed under the GPL3 (or later) License. See the LICENSE file for details.
 
 Contact
