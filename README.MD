@@ -57,29 +57,29 @@ Open the project in your preferred IDE (e.g., Arduino IDE, PlatformIO).
 Configure the project settings, including Wi-Fi credentials if necessary.
 Upload the code to the ESP32 microcontroller.
 
-###Usage
-1. Setup:
+### Usage
+1. ## Setup:
 
  - Ensure the development tank is clean and dry.
  - Prepare the water bath and set the desired temperature using a sous vide heater or another closed-loop temperature control device.
  - Submerge the development tank in the water bath.
 
-2. Initialization:
+2. ## Initialization:
 
  - Power on the device and wait for the initial setup to complete.
-3. Sequence Selection:
+3. ## Sequence Selection:
 
  - Select the desired development sequence from the options provided.
-4. Processing Steps:
+4. ## Processing Steps:
 
  - For each processing step, follow these instructions:
-  1. Add Chemistry: Fill the tank with the required volume of the developing chemical.
-  2. Start Step: Begin the step by pressing the appropriate button on the keypad. The device will rotate and agitate as per the defined sequence.
-  3. Monitor Temperature: Ensure the water bath maintains the correct temperature range.
-  4. Drain Chemistry: At the end of the step, drain the developing chemical from the tank.
-  5. Rinse and Repeat: Repeat the process for each subsequent step, adding and draining the appropriate chemicals as needed.
+  1. ** Add Chemistry: ** Fill the tank with the required volume of the developing chemical.
+  2. ** Start Step: ** Begin the step by pressing the appropriate button on the keypad. The device will rotate and agitate as per the defined sequence.
+  3. ** Monitor Temperature: ** Ensure the water bath maintains the correct temperature range.
+  4. ** Drain Chemistry: ** At the end of the step, drain the developing chemical from the tank.
+  5. ** Rinse and Repeat: ** Repeat the process for each subsequent step, adding and draining the appropriate chemicals as needed.
 
-5. Completion:
+5. ## Completion:
 
 
  - Follow standard procedures to dry the film.
