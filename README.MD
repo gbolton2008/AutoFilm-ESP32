@@ -73,11 +73,11 @@ Upload the code to the ESP32 microcontroller.
 4. #### Processing Steps:
 
  - For each processing step, follow these instructions:
- - 1. **Add Chemistry:** Fill the tank with the required volume of the developing chemical.
- - 2. **Start Step:** Begin the step by pressing the appropriate button on the keypad. The device will rotate and agitate as per the defined sequence.
- - 3. **Monitor Temperature:** Ensure the water bath maintains the correct temperature range.
- - 4. **Drain Chemistry:** At the end of the step, drain the developing chemical from the tank.
- - 5. **Rinse and Repeat:** Repeat the process for each subsequent step, adding and draining the appropriate chemicals as needed.
+  1. **Add Chemistry:** Fill the tank with the required volume of the developing chemical.
+  2. **Start Step:** Begin the step by pressing the appropriate button on the keypad. The device will rotate and agitate as per the defined sequence.
+  3. **Monitor Temperature:** Ensure the water bath maintains the correct temperature range.
+  4. **Drain Chemistry:** At the end of the step, drain the developing chemical from the tank.
+  5. **Rinse and Repeat:** Repeat the process for each subsequent step, adding and draining the appropriate chemicals as needed.
 
 5. #### Completion:
 
