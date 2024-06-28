@@ -58,19 +58,19 @@ Configure the project settings, including Wi-Fi credentials if necessary.
 Upload the code to the ESP32 microcontroller.
 
 ### Usage
-1. ## Setup:
+1. #### Setup:
 
  - Ensure the development tank is clean and dry.
  - Prepare the water bath and set the desired temperature using a sous vide heater or another closed-loop temperature control device.
  - Submerge the development tank in the water bath.
 
-2. ## Initialization:
+2. #### Initialization:
 
  - Power on the device and wait for the initial setup to complete.
-3. ## Sequence Selection:
+3. #### Sequence Selection:
 
  - Select the desired development sequence from the options provided.
-4. ## Processing Steps:
+4. #### Processing Steps:
 
  - For each processing step, follow these instructions:
   1. **Add Chemistry:** Fill the tank with the required volume of the developing chemical.
@@ -79,8 +79,7 @@ Upload the code to the ESP32 microcontroller.
   4. **Drain Chemistry:** At the end of the step, drain the developing chemical from the tank.
   5. **Rinse and Repeat:** Repeat the process for each subsequent step, adding and draining the appropriate chemicals as needed.
 
-5. ## Completion:
-
+5. #### Completion:
 
  - Follow standard procedures to dry the film.
 
