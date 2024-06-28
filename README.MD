@@ -84,7 +84,7 @@ Upload the code to the ESP32 microcontroller.
 
  - Follow standard procedures to dry the film.
 
-###Contributing
+### Contributing
 Contributions are welcome! Please follow these steps to contribute:
 
 Fork the repository.
