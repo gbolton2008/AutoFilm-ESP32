@@ -6,6 +6,7 @@
 #include "devSequence.h"
 #include "sound.h"
 #include "watchdog.h"
+#include <Arduino.h>
 
 // Function declarations
 void setup();
