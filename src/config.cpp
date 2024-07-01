@@ -1,7 +1,7 @@
 #include "config.h"
 
 // Global variables definition
-const char *version = "V0.1.0 20240625";
+const char *version = "V0.1.1 20240701";
 const byte ROWS = 5;
 const byte COLS = 4;
 byte rowPins[ROWS] = {19, 18, 5, 17, 16};
