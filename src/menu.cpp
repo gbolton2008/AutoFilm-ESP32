@@ -132,6 +132,10 @@ int startProcessing(struct devSequence *sequence, int sequenceStep)
     vTaskDelete(motorTaskHandle);
     motorTaskHandle = NULL;
   }
+
+  // Disable the motor
+  digitalWrite(EN_PIN, HIGH);
+  
   playAlarmTone();
 
   delete params;
