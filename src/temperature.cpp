@@ -3,7 +3,7 @@
 void readTemperature()
 {
   sensors.requestTemperatures();
-  float temperatureC = sensors.getTempCByIndex(0);
+  float temperatureC = sensors.getTempCByIndex(0) + TEMP_OFFSET_DEG_C;
   lcd.setCursor(13, 3);
   lcd.write(byte(0));
   if (temperatureC == DEVICE_DISCONNECTED_C)
@@ -20,7 +20,7 @@ void readTemperature()
 void updateTempDisplay(void *parameter)
 {
   sensors.requestTemperatures();
-  float temperatureC = sensors.getTempCByIndex(0);
+  float temperatureC = sensors.getTempCByIndex(0)  + TEMP_OFFSET_DEG_C;
   lcd.setCursor(13, 3);
   lcd.write(byte(0));
   if (temperatureC == DEVICE_DISCONNECTED_C)
