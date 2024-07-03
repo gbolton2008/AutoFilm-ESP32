@@ -20,7 +20,6 @@
 #define SPEED (RPM * STEPS_PER_REV / 60.0)
 #define TEMP_SENSOR_PIN 13
 #define NUM_DEV_SEQUENCES 6
-#define TEMP_OFFSET_DEG_C 0.4 //Temperature correction offset for inaccurate DS18b20 sensors
 
 extern const char *version;
 extern Keypad keypad;
